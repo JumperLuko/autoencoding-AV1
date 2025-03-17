@@ -26,7 +26,10 @@ for file in "$SRC_DIR"**/*.mp4; do
   target_path="$DST_DIR$rel_path"
   target_dir=$(dirname "$target_path")
 
-  ffmpeg -n -threads 16 -i "$file" -c:v libsvtav1 -crf 40 -preset 8 -b:v 0 -c:a libvorbis "$target_path.webm";
+  ffmpeg -n -threads 16 -i "$file" -c:v libsvtav1 -crf 40 -preset 8 -b:v 0 -b:a 96k -c:a libopus "$target_path.webm";
+  
+  ## Super compress
+  # ffmpeg -n -threads 16 -i "$file" -c:v libsvtav1 -preset 8 -b:v 10k -b:a 6k -c:a libopus -r 5 -pix_fmt yuv420p -vf scale=480:-1 "$target_path.webm"
 done
 
 ## Original generated
