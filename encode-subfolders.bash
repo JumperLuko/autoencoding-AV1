@@ -30,6 +30,9 @@ for file in $(find "$SRC_DIR" -type f -name "*.mp4"); do
   # I usually like this, because 40 CRF compress well in already little hard compressed mp4, preset 8 is fast and not ugly. 96k opus audio is almost transparent
   ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -crf 40 -preset 8 -b:v 0 -b:a 96k -c:a libopus "$target_path.webm";
 
+  ## Super compress
+  # ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -preset 8 -b:v 10k -b:a 12k -c:a libopus -r 10 -pix_fmt yuv420p -vf scale=480:-1 "$target_path.webm"
+
   # # Test outputs
   # echo "$file"
   # exit
