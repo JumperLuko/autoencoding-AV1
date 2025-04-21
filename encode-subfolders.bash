@@ -9,6 +9,7 @@ DST_DIR="$2"
 ## Ensure target directory exists
 mkdir -p "$DST_DIR"
 
+
 ## To read break lines right
 IFS=$'\n'
 ## Loop through all files in the source directory, searching for .mp4 files
@@ -28,13 +29,16 @@ for file in $(find "$SRC_DIR" -type f -name "*.mp4"); do
   ## Try others parameters if needed 
   ## check the threads
   ## I usually like this, because 40 CRF compress well in already little hard compressed mp4, preset 8 is fast and not ugly. 96k opus audio is almost transparent
-  # ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -crf 40 -preset 8 -b:v 0 -b:a 96k -c:a libopus "$target_path.webm";
+  # ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -crf 50 -preset 8 -b:v 0 -b:a 96k -c:a libopus "${target_path%.*}.webm";
 
   ## If you have a really good file in input, this is a balanced result
-  ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -crf 30 -preset 5 -b:v 0 -b:a 128k -c:a libopus "$target_path.webm";
+  # ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -crf 30 -preset 5 -b:v 0 -b:a 128k -c:a libopus "$target_path.webm";
 
   ## Super compress
-  # ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -preset 8 -b:v 10k -b:a 12k -c:a libopus -r 10 -pix_fmt yuv420p -vf scale=480:-1 "${target_path%.*}.webp"
+  # ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -preset 5 -b:v 10k -b:a 12k -c:a libopus -r 10 -pix_fmt yuv420p -vf scale=480:-1 "${target_path%.*}.webm"
+  # ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -preset 5 -b:v 10k -b:a 12k -c:a libopus -r 10 -pix_fmt yuv420p -vf scale=640:-1 "${target_path%.*}.webm"
+  # ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -preset 5 -b:v 10k -b:a 12k -c:a libopus -r 10 -pix_fmt yuv420p -vf scale=800:-1 "${target_path%.*}.webm"
+  ffmpeg -n -threads 0 -i "$file" -c:v libsvtav1 -preset 7 -b:v 10k -b:a 12k -c:a libopus -r 10 -pix_fmt yuv420p -vf scale=1024:-1 "${target_path%.*}.webm"
 
   ## Test outputs
   # echo "$file"
@@ -50,6 +54,7 @@ echo "ENCODE Done!"
 echo ""
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
 
+
 # ## UNCOMMENT THIS TO COPY OTHER FILES
 # ## Copy the not mp4 files to the destination directory
 # IFS=$'\n'
@@ -62,6 +67,7 @@ echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
 #   target_dir=$(dirname "$target_path")
 #   mkdir -p "$target_dir"
 #   cp "$file" "$target_path"
+#   echo "Copied $file"
 # done
 # echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
 # echo ""

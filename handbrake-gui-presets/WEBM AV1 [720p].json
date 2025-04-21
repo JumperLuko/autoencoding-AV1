@@ -9,7 +9,7 @@
             "AudioLanguageList": [],
             "AudioList": [
                 {
-                    "AudioBitrate": 160,
+                    "AudioBitrate": 128,
                     "AudioCompressionLevel": -1.0,
                     "AudioDitherMethod": "auto",
                     "AudioEncoder": "opus",
@@ -31,7 +31,7 @@
             "Folder": false,
             "FolderOpen": false,
             "InlineParameterSets": false,
-            "MetadataPassthrough": true,
+            "MetadataPassthru": true,
             "Mp4iPodCompatible": false,
             "Optimize": false,
             "PictureAllowUpscaling": false,
@@ -43,15 +43,15 @@
             "PictureColorspaceCustom": "",
             "PictureColorspacePreset": "off",
             "PictureCombDetectCustom": "",
-            "PictureCombDetectPreset": "default",
+            "PictureCombDetectPreset": "off",
             "PictureCropMode": 2,
-            "PictureDARWidth": 1280,
+            "PictureDARWidth": 1440,
             "PictureDeblockCustom": "strength=strong:thresh=20:blocksize=8",
             "PictureDeblockPreset": "off",
             "PictureDeblockTune": "medium",
             "PictureDeinterlaceCustom": "",
-            "PictureDeinterlaceFilter": "decomb",
-            "PictureDeinterlacePreset": "default",
+            "PictureDeinterlaceFilter": "off",
+            "PictureDeinterlacePreset": "",
             "PictureDenoiseCustom": "",
             "PictureDenoiseFilter": "off",
             "PictureDenoisePreset": "",
@@ -66,8 +66,8 @@
             "PictureLeftCrop": 0,
             "PictureModulus": 2,
             "PicturePAR": "auto",
-            "PicturePARHeight": 1,
-            "PicturePARWidth": 1,
+            "PicturePARHeight": 8,
+            "PicturePARWidth": 9,
             "PicturePadBottom": 0,
             "PicturePadColor": "black",
             "PicturePadLeft": 0,
@@ -118,7 +118,7 @@
             "x264UseAdvancedOptions": false
         }
     ],
-    "VersionMajor": 56,
+    "VersionMajor": 59,
     "VersionMicro": 0,
     "VersionMinor": 0
 }
