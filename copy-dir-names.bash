@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SRC_DIR="$1"
+DST_DIR="$2"
+
 ## Copy the directories to the destination directory, not the files inside
 IFS=$'\n'
 for dir in $(find "$SRC_DIR" -type d); do
@@ -8,7 +11,6 @@ for dir in $(find "$SRC_DIR" -type d); do
 
   rel_path=${dir#$SRC_DIR}
   target_path="$DST_DIR$rel_path"
-  target_dir=$(dirname "$target_path")
 
   # Check if the target directory already exists.  If not, create it.
   if [ ! -d "$target_path" ]; then
