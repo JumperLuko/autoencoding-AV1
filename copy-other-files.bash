@@ -5,7 +5,7 @@ DST_DIR="$2"
 
 ## Copy the not mp4 files to the destination directory
 IFS=$'\n'
-for file in $(find "$SRC_DIR" -type f -name "*.md"); do
+for file in $(find "$SRC_DIR" -type f ! -name "*.mp4"); do
 ## Old "while" loop, has some bug with name with spaces
 # find "$SRC_DIR" -type f ! -name "*.mp4" | while read file; do
 
